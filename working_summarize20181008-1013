@@ -1,0 +1,11 @@
+1. 阅读canglong程序，熟悉用CoIDE进行在线仿真。
+2. 结合canglong程序中Laser部分、LM3648手册、原理图熟悉目前Laser功能。
+  （1）Laser的初始化需要设置int lm_awb3648_init(I2C_TypeDef  *ctl, int mode, float def_current)设置工作模式
+     int lm_awb3648_set_flash_brightness(I2C_TypeDef  *ctl, float current)设置工作Laser
+     具体用法如所示设置为IR模式，电流大小为(float)plas->max_laser_current。
+    lm_awb3648_init(LASER_DRIVER_I2C, LM_AWB3648_MDOE_IR, 0.0f);
+    lm_awb3648_set_flash_brightness(LASER_DRIVER_I2C, (float)plas->max_laser_current);
+    在IR模式下，Laser接受到MCU的pwm信号后按照相同的频率进行发射激光。
+3. 结合厂家提供的开发板例程和对应的各种资料熟悉型号为VL53L1x新LDP的工作原理。（1）向厂家要到了开发板上例程的源程序和开发注意事项。
+  （2）按照说明书使开发板工作起来，通过USB连接到串口调试助手可以看到打印数据，第二个数据就是距离值。（3）阅读VL53L1X芯片资料熟悉
+   其工作原理。
